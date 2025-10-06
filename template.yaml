@@ -103,19 +103,19 @@ spec:
       name: Fetch Domain
       action: catalog:fetch
       input:
-        entityRefs: ${{ parameters.domain }}
+        entityRef: ${{ parameters.domain }}
 
     - id: fetch-system
       name: Fetch System
       action: catalog:fetch
       input:
-        entityRefs: ${{ parameters.system }}
+        entityRef: ${{ parameters.system }}
 
     - id: fetch-owner
       name: Fetch Owner
       action: catalog:fetch
       input:
-        entityRefs: ${{ parameters.owner }}
+        entityRef: ${{ parameters.owner }}
 
     - id: fetch-account
       name: Fetch Cloud Account
