@@ -139,7 +139,8 @@ spec:
           system_title: ${{ steps['fetch-system'].output.entity.metadata.title }}
           component_name: ${{ parameters.name | lower }}
           component_description: ${{ parameters.description }}
-          owner_name: ${{ steps['fetch-owner'].output.entity.metadata.title }}
+          owner_name: ${{ parameters.owner | parseEntityRef | pick('name') }}
+          owner_title: ${{ steps['fetch-owner'].output.entity.metadata.title }}
           github_org: ${{ parameters.github_org }}
 
     - id: cluster-pipeline
