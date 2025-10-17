@@ -132,9 +132,11 @@ spec:
           component_namespace: ${{ parameters.namespace }}
           lifecycle: ${{ parameters.lifecycle }}
           domain_entity: ${{ parameters.domain }}
-          domain_name: ${{ steps['fetch-domain'].output.entity.metadata.title }}
+          domain_name: ${{ parameters.domain | parseEntityRef | pick('name') }}
+          domain_title: ${{ steps['fetch-domain'].output.entity.metadata.title }}
           system_entity: ${{ parameters.system }}
-          system_name: ${{ steps['fetch-system'].output.entity.metadata.title }}
+          system_name: ${{ parameters.system | parseEntityRef | pick('name') }}
+          system_title: ${{ steps['fetch-system'].output.entity.metadata.title }}
           component_name: ${{ parameters.name | lower }}
           component_description: ${{ parameters.description }}
           owner_name: ${{ steps['fetch-owner'].output.entity.metadata.title }}
@@ -162,8 +164,8 @@ spec:
         secrets:
           DEPLOYMENT_ACCOUNT_ID: ${{ steps['fetch-account'].output.entity.metadata.title }}
         customProperties:
-          system: ${{ steps['fetch-system'].output.entity.metadata.title }}
-          domain: ${{ steps['fetch-domain'].output.entity.metadata.title }}
+          system: ${{ parameters.system | parseEntityRef | pick('name') }}
+          domain: ${{ parameters.domain | parseEntityRef | pick('name') }}
           owner: ${{ steps['fetch-owner'].output.entity.metadata.title }}
 
     - id: register
