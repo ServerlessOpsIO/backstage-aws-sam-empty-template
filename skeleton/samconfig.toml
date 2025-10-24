@@ -4,6 +4,6 @@ version = 0.1
 [default.deploy]
 
 [default.deploy.parameters]
-stack_name = "${{ values.component_name }}-db"
+stack_name = "${{ values.component_name }}"
 confirm_changeset = false
 capabilities = "CAPABILITY_NAMED_IAM"
