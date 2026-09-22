@@ -1,3 +1,3 @@
-# backstage-aws-sam-rds-template
+# backstage-aws-sam-empty-template
 
-Backstage template for AWS RDS databases deployed using AWS SAM.
+Backstage template for an AWS project starting with no resources
