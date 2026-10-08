@@ -10,6 +10,7 @@ metadata:
   tags:
     - aws
     - empty
+    - infrastructure
 
 spec:
   owner: group:00gjdgxs1ur6lsu
