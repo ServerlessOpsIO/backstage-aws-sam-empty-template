@@ -12,6 +12,7 @@ When used from Backstage, it generates a new repository skeleton with:
 - Backstage catalog metadata in `catalog-info.yaml`
 - Standard project files such as `.gitignore`, `samconfig.toml`, and deployment parameter/tag config
 - A starter `README.md` for the generated project
+- A developer handbook in `docs/handbook/`, published through Backstage TechDocs via `mkdocs.yml` and the `backstage.io/techdocs-ref` annotation
 - GitHub Actions workflows for build and deployment via AWS SAM
 
 ## Repository layout
@@ -38,12 +39,14 @@ It then:
 4. publishes the repository to GitHub, and
 5. registers the generated component in the Backstage catalog.
 
+Reading the handbook in the generated component's **Docs** tab requires the Backstage TechDocs frontend and backend, with MkDocs and `mkdocs-techdocs-core` available to the TechDocs builder.
+
 ## Next steps
 
 After generating a service from this template:
 
-- add Lambda functions, APIs, DynamoDB tables, or other resources to `template.yaml`
+- add Lambda functions, APIs, DynamoDB tables, or other resources to `template.yaml`; `sam build` and the first pipeline run fail until at least one resource exists
 - customize build and deploy settings in the generated GitHub Actions workflow
-- update the generated project README and metadata to match the service purpose
+- update the generated project README, handbook, and metadata to match the service purpose
 
 This template is intentionally minimal and intentionally empty so that teams can add the exact AWS architecture needed for each service.
