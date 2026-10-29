@@ -1,12 +1,12 @@
 <!--
 Sync Impact Report
-- Version change: unratified scaffold → 1.0.0
-- Modified principles: none; this is the initial ratification. Established principles I–VI.
-- Added sections: Repository-Specific Constraints; Development Workflow and Quality Gates.
+- Version change: 1.0.0 → 1.1.0
+- Modified principles: none.
+- Modified sections: Repository-Specific Constraints now names the generated project handbook;
+  Development Workflow and Quality Gates adds a handbook evaluation gate for new features.
+- Added sections: none.
 - Removed sections: none.
-- Applicability exclusions: workflow-template branch and pull-request rules are omitted because
-  this repository contains no workflow template. Generated application and infrastructure design
-  rules are omitted because they are outside this constitution's scope.
+- Templates requiring updates: none; plan-template.md derives its Constitution Check from this file.
 - Follow-up TODOs: template.yaml hardcodes the publish organization despite github_org input;
   generated catalog-info.yaml lacks dependency/API relations; template.yaml has no output.links;
   document the cloud-account title/AWS account ID contract next to its use.
@@ -107,9 +107,11 @@ Sync Impact Report
 - This repository contains one project template, `template.yaml`, named `aws-sam-empty`. It
   creates a new GitHub repository from `skeleton/`, whose generated catalog entity is a Backstage
   `Component` of type `iac`.
-- `skeleton/` contains the SAM starter project and root `catalog-info.yaml`. `pipeline/` contains
-  the generated GitHub Actions workflows under `.github/workflows/`; the `main.yml` workflow
-  builds on `main` and deploys, while `branch.yml` handles non-`main` branches.
+- `skeleton/` contains the SAM starter project, root `catalog-info.yaml`, and the generated
+  project handbook in `skeleton/docs/handbook/`, published through `skeleton/mkdocs.yml` and
+  TechDocs. `pipeline/` contains the generated GitHub Actions workflows under
+  `.github/workflows/`; the `main.yml` workflow builds on `main` and deploys, while `branch.yml`
+  handles non-`main` branches.
 - The form's catalog selections are owner, Domain, System, Environment, and cloud account. The
   template currently has no workflow template and no optional external-service steps.
 
@@ -123,6 +125,12 @@ Sync Impact Report
   required Backstage actions, or other prerequisites MUST update `README.md` in the same change,
   and the generated project README when affected. A new or changed scaffolder action MUST be named
   in the README along with the Backstage module that provides it.
+- When creating a new feature, its specification and plan MUST evaluate the feature against the
+  generated project handbook in `skeleton/docs/handbook/` and record whether the handbook requires
+  updating. Features that change generated files, form inputs, prerequisites, pipelines, or
+  developer workflows MUST update the affected handbook pages, and `skeleton/mkdocs.yml` when
+  pages are added or removed, in the same change. A feature needing no handbook change MUST state
+  why.
 - Generated, operating-system, and editor files, including `.DS_Store`, `__pycache__`, and
   `node_modules`, MUST NOT be committed.
 - Work on `feature/` or `bug/` branches that reference an issue number when one exists. Use
@@ -139,4 +147,4 @@ Versioning follows semantic versioning: MAJOR removes or incompatibly redefines 
 adds a principle or section or materially expands guidance, and PATCH clarifies wording or makes
 non-semantic refinements.
 
-**Version**: 1.0.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-10-29
+**Version**: 1.1.0 | **Ratified**: 2026-10-29 | **Last Amended**: 2026-10-29
